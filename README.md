@@ -186,6 +186,59 @@ You can prevent specific events from contributing to the busy-time count:
 
 ---
 
+## Local Development with Clasp
+
+[Clasp](https://github.com/google/clasp) is the Google Apps Script CLI that allows you to develop and manage Apps Script projects from your local machine.
+
+### Set Up Clasp
+
+1. Install Node.js and npm if you haven't already.
+2. Install clasp globally:
+   ```bash
+   npm install -g @google/clasp
+   ```
+
+3. Clone this repository:
+   ```bash
+   git clone https://github.com/bwstefano/gcal-calcom-auto-blocker.git
+   cd gcal-calcom-auto-blocker
+   ```
+
+4. Log in to your Google account:
+   ```bash
+   clasp login
+   ```
+
+5. Create an Apps Script project linked to this repository:
+   - Go to [script.google.com](https://script.google.com) and create a new project
+   - Copy the script ID from **Project Settings → Project ID**
+   - Copy the `.clasp.json.example` file and rename it to `.clasp.json`
+   - Edit `.clasp.json` and paste your Script ID:
+   ```json
+   {
+     "scriptId": "YOUR_SCRIPT_ID_HERE",
+     "projectId": "YOUR_PROJECT_ID_HERE",
+     "fileExtension": "gs",
+     "rootDir": "./src"
+   }
+   ```
+   - Note: `.clasp.json` is ignored by git, so your credentials stay local.
+
+6. Push your local code to Apps Script:
+   ```bash
+   clasp push
+   ```
+
+### Useful Clasp Commands
+
+- `clasp push` — Push local code to Apps Script
+- `clasp pull` — Pull code from Apps Script to local (useful if you edited online)
+- `clasp logs` — View execution logs
+- `clasp run` — Run a function remotely
+- `clasp open` — Open the project in Apps Script editor
+
+---
+
 ## Project Structure
 
 ```
